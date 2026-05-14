@@ -249,7 +249,7 @@ export default function App() {
 
             <div className="lg:col-span-7">
               <h2 className="text-5xl md:text-8xl font-bold uppercase mb-12 italic">
-                Dlaczego <span className="text-brand">Ona?</span>
+                Dlaczego <span className="text-brand">My?</span>
               </h2>
               <div className="space-y-12">
                 {WHY_US.map((item, i) => (
@@ -294,11 +294,25 @@ export default function App() {
                   </div>
                 </div>
               </div>
-              <div className="bg-black/10 backdrop-blur-sm p-8 border border-white/20">
-                <h4 className="text-sm font-bold uppercase tracking-widest mb-4">Działamy w:</h4>
-                <div className="grid grid-cols-2 gap-4 font-display font-bold text-xl uppercase italic">
-                  {LOCATIONS.map((l, i) => <div key={i} className="flex items-center gap-2"><MapPin size={16} /> {l}</div>)}
-                  <div className="col-span-2 text-sm font-light mt-4 opacity-70 italic">...oraz okoliczne miejscowości</div>
+              <div className="bg-black/10 backdrop-blur-sm p-6 md:p-10 border border-white/20">
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] mb-6 opacity-60 italic">Zasięg mobilny:</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 font-display font-bold text-lg md:text-xl uppercase italic">
+                  {LOCATIONS.map((l, i) => (
+                    <motion.div 
+                      key={i} 
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.05 }}
+                      className="flex items-center gap-3 border-l-2 border-white/10 pl-3 hover:border-brand transition-colors"
+                    >
+                      <MapPin size={16} className="text-white/40" /> 
+                      {l}
+                    </motion.div>
+                  ))}
+                  <div className="col-span-full text-[10px] font-bold uppercase tracking-[0.2em] mt-6 opacity-50 flex items-center gap-3">
+                    <span className="w-4 h-px bg-white/30"></span> oraz okoliczne miejscowości
+                  </div>
                 </div>
               </div>
             </div>
